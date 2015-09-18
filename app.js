@@ -2,7 +2,6 @@ var express = require('express');
 var app      = express();
 var path     = require('path');
 var bodyParser = require('body-parser');
-var handleBars = require('express-handlebars');
 var r = require('rethinkdbdash')({
 	host: 'localhost',
 	port: 28015,
@@ -25,10 +24,13 @@ app.get('/tasks', function(req, res) {
     });
 });
 
-// app.post('/tasks', function(req, res) {
-// 	console.log(req.body);
-// 	r.table('tasks').insert({name: "dan"}).run();
-// });
+app.post('/tasks', function(req, res) {
+	var currentTask = req.body;
+	r.table('tasks').insert({name: currentTask.name, task: currentTask.task}).run(function() {
+		res.redirect('/');
+	});
+	console.log(currentTask);
+});
 
 // app.delete('/tasks', function(req, res) {
 // 	r.table('tasks')
@@ -36,6 +38,6 @@ app.get('/tasks', function(req, res) {
 
 var server = app.listen(3000, function() {
 	var port = server.address().port;
-	var host   = server.address().address;
+	var host = server.address().address;
 	console.log('Example app listening at http://%s:%s', host, port);
 });
