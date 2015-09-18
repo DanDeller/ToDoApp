@@ -59,3 +59,4 @@
 2015-09-18T09:55:40.130254000 0.851649s notice: A newer version of the RethinkDB server is available: 2.1.4. You can read the changelog at <https://github.com/rethinkdb/rethinkdb/releases>.
 2015-09-18T09:55:40.986244000 1.707578s info: Table 57a99360-1bf7-4716-b203-1085ac2b3cf1: Starting a new Raft election for term 4.
 2015-09-18T09:55:41.009149000 1.730482s info: Table 57a99360-1bf7-4716-b203-1085ac2b3cf1: This server is Raft leader for term 4. Latest log index is 8.
+2015-09-18T15:41:35.379239000 17620.989582s notice: Someone asked for the nonwhitelisted file "/search/resultsAPI/all/smith/john".  If this should be accessible, add it to the static web assets.

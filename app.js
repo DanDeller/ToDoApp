@@ -32,6 +32,10 @@ app.post('/tasks', function(req, res) {
 	console.log(currentTask);
 });
 
+app.patch('/tasks', function() {
+
+});
+
 // app.delete('/tasks', function(req, res) {
 // 	r.table('tasks')
 // });

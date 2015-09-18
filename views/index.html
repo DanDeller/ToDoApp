@@ -13,6 +13,22 @@
     			<input name="task" type="text" placeholder='task' />
     			<input type="submit">
     		</form>
+
+        <!-- Loop -->
+        <div data-task-id="">Task Name</div>
+
+        <form action="/tasks" method="DELETE">
+          <input type="hidden" name="id" value="">
+            <input type="submit">
+        </form>
+
+        <form action="/tasks" method="PUT">
+          <input type="hidden" name="id" value="">
+          <input type="task" name="name" value="">
+          <input type="task" name="itask" value="">
+
+            <input type="submit">
+        </form>
     </div>
 </body>
 </html>
