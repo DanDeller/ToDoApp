@@ -4,31 +4,86 @@
     <meta charset="UTF-8">
     <title>seoTestApp</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <style type="text/css">
+        body {margin: 0; padding: 0; border: none}
+        h1 {margin: 50px 0 20px 0}
+        ul {list-style: none; margin: 0 0 20px -40px}
+        .list {margin: 20px 0 0 0}
+        .list p {float:left; margin: 0 20px 0 0; font-size: 16px}
+        .single-todo {margin: 0 0 10px 0}
+        .destroy {}
+    </style>
 </head>
 <body>
     <div class="container">
-    		<h1>Hey there</h1>
+    		<h1>Todo List</h1>
+
+        <!-- post new todos -->
     		<form action='/tasks' method='post'>
     			<input name="name" type="text" placeholder='name' />
     			<input name="task" type="text" placeholder='task' />
     			<input type="submit">
     		</form>
 
-        <!-- Loop -->
-        <div data-task-id="">Task Name</div>
+        <!-- loop -->
+        <div class="list" data-task-id="">
+            <ul class="task-list"></ul>
+        </div>
 
-        <form action="/tasks" method="DELETE">
-          <input type="hidden" name="id" value="">
-            <input type="submit">
+        <!-- way to delete todo items -->
+        <form action="/tasks" method="delete">
+             <input type="hidden" name="id" value="">
+             <input type="submit">
         </form>
 
-        <form action="/tasks" method="PUT">
-          <input type="hidden" name="id" value="">
-          <input type="task" name="name" value="">
-          <input type="task" name="itask" value="">
+        <!-- way to update todo items?? -->
+        <!-- <form action="/tasks" method="PUT">
+             <input type="hidden" name="id" value="">
+             <input type="task" name="name" value="">
+             <input type="task" name="itask" value="">
+             <input type="submit">
+        </form> -->
 
-            <input type="submit">
-        </form>
     </div>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var output ='';
+
+        (function getTasks() {
+            var tasks;
+            $.ajax({
+                url: 'http://localhost:3000/tasks',
+                dataType: 'json',
+                success: function(data) {
+                    tasks = data;
+                }
+            }).done(function() {
+                displayTasks(tasks);
+            });
+        })();
+
+        function displayTasks(tasks) {
+            var taskList = $('.task-list');
+            $.each(tasks, function(i) {
+                taskList.append(
+                    '<li class="single-todo">' +
+                    '<p class="name">' + tasks[i].name + ' - ' + tasks[i].task + '</p>'+
+                    '<button data-id="'+tasks[i].id+'" class="destroy">Destroy</button>'+
+                    '</li>'
+                );
+            });
+
+            console.log(tasks);
+
+        }
+        $(document).on('click','.destroy[data-id]',function() {
+          var self = $(this);
+          console.log( self.attr('data-id'))
+        })
+    });
+</script>
 </body>
 </html>

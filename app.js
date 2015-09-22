@@ -1,6 +1,7 @@
 var express = require('express');
 var app      = express();
-var path     = require('path');
+var router  = express.Router();
+var path    = require('path');
 var bodyParser = require('body-parser');
 var r = require('rethinkdbdash')({
 	host: 'localhost',
@@ -12,18 +13,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
 
+// get index
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/views/index.html'));
 });
 
+// get all tasks
 app.get('/tasks', function(req, res) {
     r.table('tasks').run().then(function(tasks) {
+    		var todo = tasks;
     		res.json(200, tasks);
     }).error(function() {
     		console.log('Something with the GET is broken...');
     });
 });
 
+// post new tasks
 app.post('/tasks', function(req, res) {
 	var currentTask = req.body;
 	r.table('tasks').insert({name: currentTask.name, task: currentTask.task}).run(function() {
@@ -32,16 +37,22 @@ app.post('/tasks', function(req, res) {
 	console.log(currentTask);
 });
 
+// delete tasks
+app.delete('/tasks',function(req,res) {
+    r.table('tasks').get(req.body.id).delete().run(function() {
+        res.json(200);
+    });
+});
+
+// update tasks
 app.patch('/tasks', function() {
 
 });
 
-// app.delete('/tasks', function(req, res) {
-// 	r.table('tasks')
-// });
-
+// start up our server
 var server = app.listen(3000, function() {
 	var port = server.address().port;
 	var host = server.address().address;
 	console.log('Example app listening at http://%s:%s', host, port);
 });
+
