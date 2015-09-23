@@ -10,8 +10,8 @@
         ul {list-style: none; margin: 0 0 20px -40px}
         .list {margin: 20px 0 0 0}
         .list p {float:left; margin: 0 20px 0 0; font-size: 16px}
-        .single-todo {margin: 0 0 10px 0}
-        .destroy {}
+        .single-todo {width: 220px; height: 30px; margin: 0 0 10px 0; border-bottom: 1px solid #ccc; padding: 0 0px 35px 0}
+        .destroy {float: right;}
     </style>
 </head>
 <body>
@@ -26,15 +26,9 @@
     		</form>
 
         <!-- loop -->
-        <div class="list" data-task-id="">
+        <div class="list">
             <ul class="task-list"></ul>
         </div>
-
-        <!-- way to delete todo items -->
-        <form action="/tasks" method="delete">
-             <input type="hidden" name="id" value="">
-             <input type="submit">
-        </form>
 
         <!-- way to update todo items?? -->
         <!-- <form action="/tasks" method="PUT">
@@ -50,7 +44,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        var output ='';
+        var output = '';
 
         (function getTasks() {
             var tasks;
@@ -69,20 +63,27 @@
             var taskList = $('.task-list');
             $.each(tasks, function(i) {
                 taskList.append(
-                    '<li class="single-todo">' +
-                    '<p class="name">' + tasks[i].name + ' - ' + tasks[i].task + '</p>'+
-                    '<button data-id="'+tasks[i].id+'" class="destroy">Destroy</button>'+
-                    '</li>'
+                      '<li class="single-todo">' +
+                          '<p class="name">' + tasks[i].name + ' - ' + tasks[i].task + '</p>' +
+                          '<button data-id="' + tasks[i].id + '" class="destroy">Delete</button>' +
+                      '</li>'
                 );
             });
-
-            console.log(tasks);
-
         }
+
         $(document).on('click','.destroy[data-id]',function() {
-          var self = $(this);
-          console.log( self.attr('data-id'))
-        })
+            var self = $(this);
+            var id = self.attr('data-id');
+
+            $.ajax({
+                 url: 'http://localhost:3000/tasks/?id=' + id,
+                 type: 'DELETE',
+                 success: function(data) {
+                      location.reload(true);
+                }
+            });
+        });
+
     });
 </script>
 </body>

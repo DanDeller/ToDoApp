@@ -34,13 +34,13 @@ app.post('/tasks', function(req, res) {
 	r.table('tasks').insert({name: currentTask.name, task: currentTask.task}).run(function() {
 		res.redirect('/');
 	});
-	console.log(currentTask);
 });
 
 // delete tasks
-app.delete('/tasks',function(req,res) {
-    r.table('tasks').get(req.body.id).delete().run(function() {
-        res.json(200);
+app.delete('/tasks', function(req, res) {
+    var currentId = req.query;
+    r.table('tasks').get(currentId.id).delete().run().then(function(tasks) {
+        res.json(200, tasks);
     });
 });
 
