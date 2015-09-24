@@ -45,8 +45,15 @@ app.delete('/tasks', function(req, res) {
 });
 
 // update tasks
-app.patch('/tasks', function() {
-
+app.patch('/tasks', function(req, res) {
+	var patchId = req.query;
+	var patchItems = req.body;
+	r.table('tasks').get(patchId.id).update({
+		name: patchItems.name,
+		task: patchItems.task
+	}).run().then(function(tasks) {
+		res.json(200, tasks);
+	});
 });
 
 // start up our server
