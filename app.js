@@ -3,24 +3,23 @@ var app      = express();
 var router  = express.Router();
 var path    = require('path');
 var bodyParser = require('body-parser');
+var _ = require('lodash');
 var r = require('rethinkdbdash')({
 	host: 'localhost',
 	port: 28015,
 	db: 'testSite'
 });
-var _ = require('lodash');
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
 
 // middlewear to check path and method
-app.use(function(req,res,next) {
-  console.log(req.path)
-  console.log(req.method);
-  next();
-});
+// app.use(function(req,res,next) {
+//   console.log(req.path)
+//   console.log(req.method);
+//   next();
+// });
 
 // get index DON'T NEED THIS! FIND OUT WHY!
 // app.get('/', function(req, res) {
@@ -40,7 +39,7 @@ app.get('/tasks', function(req, res) {
 // post new tasks
 app.post('/tasks', function(req, res) {
 	var currentTask = req.body;
-	r.table('tasks').insert({name: currentTask.name, task: currentTask.task}).run(function() {
+	r.table('tasks').insert({name: currentTask.name, task: currentTask.task}).run(function(err, cursor) {
         res.redirect('/');
     });
 });
