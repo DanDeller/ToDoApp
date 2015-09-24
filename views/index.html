@@ -1,90 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>seoTestApp</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <style type="text/css">
-        body {margin: 0; padding: 0; border: none}
-        h1 {margin: 50px 0 20px 0}
-        ul {list-style: none; margin: 0 0 20px -40px}
-        .list {margin: 20px 0 0 0}
-        .list p {float:left; margin: 0 20px 0 0; font-size: 16px}
-        .single-todo {width: 220px; height: 30px; margin: 0 0 10px 0; border-bottom: 1px solid #ccc; padding: 0 0px 35px 0}
-        .destroy {float: right;}
-    </style>
+  <meta charset="UTF-8">
+  <title>seoTestApp</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <style type="text/css">
+    body {margin: 0; padding: 0; border: none}
+    h1 {margin: 50px 0 20px 0}
+    ul {list-style: none; margin: 0 0 20px -40px}
+    .list {margin: 20px 0 0 0}
+    .list p {float:left; margin: 0 20px 0 0; font-size: 16px}
+    .single-todo {width: 220px; height: 30px; margin: 0 0 10px 0; border-bottom: 1px solid #ccc; padding: 0 0px 35px 0}
+    .destroy {float: right;}
+  </style>
 </head>
 <body>
-    <div class="container">
-    		<h1>Todo List</h1>
+  <div class="container">
+		<h1>Todo List</h1>
 
-        <!-- post new todos -->
-    		<form action='/tasks' method='post'>
-    			<input name="name" type="text" placeholder='name' />
-    			<input name="task" type="text" placeholder='task' />
-    			<input type="submit">
-    		</form>
+    <!-- post new todos -->
+		<form action='/tasks' method='post'>
+			<input class="name" name="name" type="text" placeholder='name' />
+			<input class="task" name="task" type="text" placeholder='task' />
+			<input type="submit">
+		</form>
 
-        <!-- loop -->
-        <div class="list">
-            <ul class="task-list"></ul>
-        </div>
-
-        <!-- way to update todo items?? -->
-        <!-- <form action="/tasks" method="PUT">
-             <input type="hidden" name="id" value="">
-             <input type="task" name="name" value="">
-             <input type="task" name="itask" value="">
-             <input type="submit">
-        </form> -->
-
+    <!-- loop -->
+    <div class="list">
+      <ul class="task-list"></ul>
     </div>
+
+    <!-- way to update todo items?? -->
+   <!--  <form action="/tasks" method="PUT">
+      <input type="hidden" name="id" value="">
+      <input type="task" name="name" value="">
+      <input type="task" name="itask" value="">
+      <input type="submit">
+    </form> -->
+  </div>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        var output = '';
+    var output = '';
 
-        (function getTasks() {
-            var tasks;
-            $.ajax({
-                url: 'http://localhost:3000/tasks',
-                dataType: 'json',
-                success: function(data) {
-                    tasks = data;
-                }
-            }).done(function() {
-                displayTasks(tasks);
-            });
-        })();
-
-        function displayTasks(tasks) {
-            var taskList = $('.task-list');
-            $.each(tasks, function(i) {
-                taskList.append(
-                      '<li class="single-todo">' +
-                          '<p class="name">' + tasks[i].name + ' - ' + tasks[i].task + '</p>' +
-                          '<button data-id="' + tasks[i].id + '" class="destroy">Delete</button>' +
-                      '</li>'
-                );
-            });
+    function getTasks() {
+      var tasks;
+      $.ajax({
+        url: 'http://localhost:3000/tasks',
+        dataType: 'json',
+        success: function(data) {
+          tasks = data;
         }
+      }).done(function() {
+        displayTasks(tasks);
+      });
+    } 
+    getTasks();
 
-        $(document).on('click','.destroy[data-id]',function() {
-            var self = $(this);
-            var id = self.attr('data-id');
+    function displayTasks(tasks) {
+      var taskList = $('.task-list');
+      $.each(tasks, function(i) {
+        taskList.append(
+        '<li class="single-todo">' +
+          '<p class="name">' + tasks[i].name + ' - ' + tasks[i].task + '</p>' +
+          '<button data-id="' + tasks[i].id + '" class="destroy">Delete</button>' +
+        '</li>'
+        );
+      });
+    }
 
-            $.ajax({
-                 url: 'http://localhost:3000/tasks/?id=' + id,
-                 type: 'DELETE',
-                 success: function(data) {
-                      location.reload(true);
-                }
-            });
-        });
+    $('form').on('submit', function(e) {
+      var name = $('.name').val(),
+          task = $('.task').val();
 
+      if (name == '' || task == '') {
+        alert('fill out the damn form')
+        e.preventDefault();
+      }
     });
+
+    $(document).on('click','.destroy[data-id]',function() {
+      var self = $(this),
+          id   = self.attr('data-id');
+
+      $(this).parent().fadeOut(500, function() {
+        $.ajax({
+          url: 'http://localhost:3000/tasks/?id=' + id,
+          type: 'DELETE',
+          success: function(data) {
+            console.log('task deleted');
+          }
+        });
+      });
+    });
+
+});
 </script>
 </body>
 </html>
