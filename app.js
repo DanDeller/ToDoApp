@@ -10,7 +10,6 @@ var r = require('rethinkdbdash')({
 });
 var _ = require('lodash');
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
@@ -24,7 +23,7 @@ app.use(function(req,res,next) {
 
 // get index DON'T NEED THIS! FIND OUT WHY!
 // app.get('/', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/views/index.html'));
+// 	res.sendFile(path.join(__dirname + '/views/index.html'));
 // });
 
 // get all tasks
