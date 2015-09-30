@@ -46,9 +46,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
 
-    var output = '',
-         form    = $('.form2'),
-         tasks;
+     var form = $('.form2'),
+          tasks;
 
     // display all tasks
     function displayTasks(tasks) {
@@ -67,7 +66,6 @@ $(document).ready(function() {
     function getTasks(ajaxData) {
         $.ajax({
             url: 'http://localhost:3000/tasks',
-            dataType: 'json',
             success: function(data) {
                   tasks = data;
                   ajaxData(data);
@@ -84,15 +82,15 @@ $(document).ready(function() {
 
     // get id
     $(document).on('click','.single-todo',function() {
-        var todo = $(this),
-             id = todo.find('button').attr('data-id');
+         var todo = $(this),
+              id     = todo.find('button').attr('data-id');
         form.find('[type="hidden"]').val(id);
     });
 
     // delete tasks
     $(document).on('click', '.destroy[data-id]', function() {
       var self = $(this),
-           id   = self.attr('data-id');
+           id    = self.attr('data-id');
         $(this).parent().fadeOut(500, function() {
             $.ajax({
                 url: 'http://localhost:3000/tasks/?id=' + id,
