@@ -10,8 +10,8 @@ build:
     - script:
         name: install dev dependencies
         code: npm install
-    - hgen/gulp:
-        tasks: dist
+    # - hgen/gulp:
+    #     tasks: dist
     - npm-test
 
     - script:
