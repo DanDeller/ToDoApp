@@ -6,9 +6,23 @@ var app = require('../app.js');
 describe('api', function() {
   describe('task', function () {
     it('should return 200 on get request', function (done) {
-              request(app)
-              .get('/tasks')
-              .expect(200, done);
+      request(app)
+      .get('/tasks')
+      .expect(200, done);
+    });
+    it('should return 200 on delete request', function (done) {
+      request(app)
+      .del('/tasks')
+      .expect(200, done);
     });
   });
+
+  // describe('users', function () {
+  //   it('should return 200 on get request', function (done) {
+  //     request(app)
+  //     .get('/tasks')
+  //     .expect(200, done);
+  //   });
+  // });
+
 });
