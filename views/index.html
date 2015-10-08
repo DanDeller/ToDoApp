@@ -28,7 +28,6 @@
 		<input class="task" name="task" type="text" placeholder='task' />
 		<input type="submit">
 	</form>
-
     <!-- loop -->
     <div class="list">
       <ul class="task-list"></ul>
@@ -118,24 +117,6 @@ $(document).ready(function() {
             }
         });
     });
-
-    // update tasks
-    // $('.form2').on('submit', function(e) {
-    //     e.preventDefault();
-    //     var data = {};
-    //     data.id = $('.form2 [name="id"]').val();
-    //     data.name = $('.form2 [name="name"]').val();
-    //     data.task = $('.form2 [name="task"]').val();
-    //     $.ajax({
-    //         url: 'http://localhost:3000/tasks',
-    //         type: 'PATCH',
-    //         data: data,
-    //         success: function(data) {
-    //             location.reload(true);
-    //             console.log('task updated');
-    //         }
-    //     });
-    // });
 
 });
 </script>

@@ -18,24 +18,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
 
 // middleware
-app.use(function(req,res,next) {
-  // console.log(req.path)
-  // console.log(req.method);
+app.use(function(req, res, next) {
   next();
 });
 
 app.use(endpoints.tasks);
 
-// get index DON'T NEED THIS! FIND OUT WHY!
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/views/index.html'));
-});
-
 // start up our server
 var server = app.listen(3000, function() {
 	var port = server.address().port;
 	var host = server.address().address;
-	console.log('Example app listening at http://%s:%s', host, port);
+	console.log('App listening at http://%s:%s', host, port);
 });
 
 module.exports = app;
