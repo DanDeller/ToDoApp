@@ -18,15 +18,5 @@ describe('api', function() {
       });
     });
 
-    // it('should return 200 on DELETE', function (done) {
-    //   request(app)
-    //   .delete('/tasks/?id=' + currentId)
-    //   .expect(200)
-    //   .end(function(err, res) {
-    //     if (err) return done(err);
-    //     done();
-    //   });
-    // });
-
   });
 });
