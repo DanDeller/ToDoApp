@@ -16,13 +16,12 @@ var endpoints = requireDir('./lib/endpoints');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/views'));
+app.use(endpoints.tasks);
 
 // middleware
 app.use(function(req, res, next) {
   next();
 });
-
-app.use(endpoints.tasks);
 
 // start up our server
 var server = app.listen(3000, function() {
