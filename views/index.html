@@ -23,10 +23,10 @@
     <h1>Todo List</h1>
     <!-- post new todos -->
     <h3>Add tasks</h3>
-    <form action='/tasks' method='post'>
+    <form action='/tasks' method='POST'>
       <input class="name" name="name" type="text" placeholder='name' />
       <input class="task" name="task" type="text" placeholder='task' />
-      <input type="submit">
+      <!-- <input type="submit"> -->
     </form>
     <!-- loop -->
     <div class="list">
@@ -79,7 +79,7 @@
     // get id
     $(document).on('click','.single-todo',function() {
      var todo = $(this),
-     id     = todo.find('button').attr('data-id');
+          id     = todo.find('button').attr('data-id');
      form.find('[type="hidden"]').val(id);
    });
 

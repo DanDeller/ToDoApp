@@ -18,6 +18,7 @@
     "express3-handlebars": "^0.5.2",
     "handlebars": "^4.0.2",
     "html": "0.0.10",
+    "jsonwebtoken": "^5.4.0",
     "lodash": "^3.10.1",
     "multer": "^1.0.3",
     "nodemon": "^1.7.1",

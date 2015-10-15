@@ -5,6 +5,7 @@ var path    = require('path');
 var bodyParser = require('body-parser');
 var _ = require('lodash');
 var requireDir = require('require-dir');
+var jwt    = require('jsonwebtoken');
 var r = require('rethinkdbdash')({
 	host: 'localhost',
 	port: 28015,
@@ -13,9 +14,16 @@ var r = require('rethinkdbdash')({
 
 var endpoints = requireDir('./lib/endpoints');
 
+app.use(function(res, req, next) {
+  next();
+});
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/views/login.html'));
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/views'));
 app.use(endpoints.tasks);
 
 // middleware

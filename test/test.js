@@ -9,6 +9,8 @@ describe('api', function() {
   describe('task', function () {
 
     it('should return 200 on GET', function (done) {
+      // this.timeout = 10000;
+
       request(app)
       .get('/tasks')
       .expect(200)
