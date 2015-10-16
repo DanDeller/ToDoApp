@@ -26,7 +26,7 @@
     <form action='/tasks' method='POST'>
       <input class="name" name="name" type="text" placeholder='name' />
       <input class="task" name="task" type="text" placeholder='task' />
-      <!-- <input type="submit"> -->
+      <input type="submit">
     </form>
     <!-- loop -->
     <div class="list">
@@ -102,12 +102,10 @@
     $(document).on('click', '.update', function() {
       var todo = $(this),
       id     = todo.attr('data-id');
-
       var data = {};
       data.id = id;
       data.name = $(this).prev().prev('.test2').val();
       data.task = $(this).prev('.test3').val();
-
       $.ajax({
         url: 'http://localhost:3000/tasks',
         type: 'PATCH',

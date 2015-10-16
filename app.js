@@ -14,21 +14,14 @@ var r = require('rethinkdbdash')({
 
 var endpoints = requireDir('./lib/endpoints');
 
-app.use(function(res, req, next) {
-  next();
-});
-
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/views/login.html'));
 });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(endpoints.tasks);
-
-// middleware
-app.use(function(req, res, next) {
-  next();
+app.use(bodyParser.urlencoded({extended: true}));
+_.each(endpoints,function(middleware, name) {
+  app.use(middleware);
 });
 
 // start up our server
@@ -39,3 +32,9 @@ var server = app.listen(3000, function() {
 });
 
 module.exports = app;
+
+// TEMPLATE STUFF
+// app.set('view engine', 'ejs');
+// app.get('/', function(req, res) {
+//   res.render('login', {user: "Dan"});
+// });
