@@ -4,41 +4,36 @@
   <title>Login</title>
 </head>
 <body>
-  <h1>Sign Up</h1>
+    <h2>Sign Up</h2>
     <form action="/users" method="POST">
         <label>Username:</label>
-        <input class="email" type="text" name="email" placeholder='email' />
+        <input class="email" type="text" name="username" placeholder='email' />
         <label>Password:</label>
         <input class="password" type="password" name="password"/>
         <input class="submit" type="submit" value="Submit"/>
     </form>
 
-<!--   <form action="/users" method="post">
-    <div>
-      <label>Username:</label>
-      <input type="text" name="username"/><br/>
-    </div>
-    <div>
-      <label>Password:</label>
-      <input type="password" name="password"/>
-    </div>
-    <div>
-      <input type="submit" value="Submit"/>
-    </div>
-    </form> -->
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" placeholder='email' />
+        <label>Password:</label>
+        <input type="password" name="password"/>
+        <input type="submit" value="Submit"/>
+    </form>
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-    $('form').on('submit', function(e) {
-        var inputs = $('.email').val() && $('.password').val();
-        if (inputs <= 0) {
-          e.preventDefault();
-          alert('fill out the damn form');
-        }
-    });
-});
+// $(document).ready(function() {
+//     $('form').on('submit', function(e) {
+//         var inputs = $('.email').val() && $('.password').val();
+//         if (inputs <= 0) {
+//           e.preventDefault();
+//           alert('fill out the damn form');
+//         }
+//     });
+// });
 </script>
 </body>
 </html>
