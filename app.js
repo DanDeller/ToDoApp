@@ -5,12 +5,7 @@ var path    = require('path');
 var bodyParser = require('body-parser');
 var _ = require('lodash');
 var requireDir = require('require-dir');
-var jwt    = require('jsonwebtoken');
-var r = require('rethinkdbdash')({
-	host: 'localhost',
-	port: 28015,
-	db: 'testSite'
-});
+var r = require('./lib/r.js');
 
 var endpoints = requireDir('./lib/endpoints');
 
