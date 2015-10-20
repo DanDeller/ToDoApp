@@ -1,13 +1,13 @@
-var express = require('express');
-var app      = express();
-var router  = express.Router();
-var path    = require('path');
+var express    = require('express');
+var app        = express();
+var router     = express.Router();
+var path       = require('path');
 var bodyParser = require('body-parser');
-var _ = require('lodash');
+var _          = require('lodash');
 var requireDir = require('require-dir');
-var r = require('./lib/r.js');
-var config = require('./config');
-var endpoints = requireDir('./lib/endpoints');
+var r          = require('./lib/r.js');
+var config     = require('./config');
+var endpoints  = requireDir('./lib/endpoints');
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/views/login.html'));
