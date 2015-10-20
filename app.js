@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var _ = require('lodash');
 var requireDir = require('require-dir');
 var r = require('./lib/r.js');
-
+var config = require('./config');
 var endpoints = requireDir('./lib/endpoints');
 
 app.get('/', function(req, res) {
@@ -15,8 +15,38 @@ app.get('/', function(req, res) {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.set('superSecret', config.secret);
 _.each(endpoints,function(middleware, name) {
   app.use(middleware);
+});
+
+// ---------------------------------------------------------
+// route middleware to authenticate and check token
+// ---------------------------------------------------------
+app.use(function(req, res, next) {
+	// check header or url parameters or post parameters for token
+	var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+	// decode token
+	if (token) {
+		// verifies secret and checks exp
+		jwt.verify(token, app.get('superSecret'), function(err, decoded) {			
+			if (err) {
+				return res.json({ success: false, message: 'Failed to authenticate token.' });		
+			} else {
+				// if everything is good, save to request for use in other routes
+				req.decoded = decoded;	
+				next();
+			}
+		});
+	} else {
+		// if there is no token
+		// return an error
+		return res.status(403).send({ 
+			success: false, 
+			message: 'No token provided.'
+		});
+		
+	}	
 });
 
 // start up our server
