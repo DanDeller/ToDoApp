@@ -13,9 +13,10 @@ var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/views/login.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
+app.use(express.static(path.join(__dirname, './public')))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 _.each(endpoints,function(middleware, name) {
