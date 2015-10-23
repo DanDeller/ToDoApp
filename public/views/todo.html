@@ -34,89 +34,89 @@
     </div>
 
   </div>
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
+ <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+ <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+ <script type="text/javascript">
+//     $(document).ready(function() {
 
-     var form = $('.form2'),
-          tasks;
+//      var form = $('.form2'),
+//           tasks;
 
-    // display all tasks
-    function displayTasks(tasks) {
-      var taskList = $('.task-list');
-      $.each(tasks, function(i) {
-        taskList.append(
-          '<li class="single-todo">' +
-          '<input class="test1" type="hidden" name="id" value= "' + tasks[i].id + '" />' +
-          '<input class="test2" type="text" name="name" value="' + tasks[i].name + '" />' +
-          '<input class="test3" type="text" name="task" value="' + tasks[i].task + '" />' +
-          '<button data-id="' + tasks[i].id + '" class="update">Update</button>' +
-          '<button data-id="' + tasks[i].id + '" class="destroy">Delete</button>' +
-          '</li>'
-          );
-      });
-    }
+//     // display all tasks
+//     function displayTasks(tasks) {
+//       var taskList = $('.task-list');
+//       $.each(tasks, function(i) {
+//         taskList.append(
+//           '<li class="single-todo">' +
+//           '<input class="test1" type="hidden" name="id" value= "' + tasks[i].id + '" />' +
+//           '<input class="test2" type="text" name="name" value="' + tasks[i].name + '" />' +
+//           '<input class="test3" type="text" name="task" value="' + tasks[i].task + '" />' +
+//           '<button data-id="' + tasks[i].id + '" class="update">Update</button>' +
+//           '<button data-id="' + tasks[i].id + '" class="destroy">Delete</button>' +
+//           '</li>'
+//           );
+//       });
+//     }
 
-    // get all tasks
-    function getTasks(ajaxData) {
-      $.ajax({
-        url: 'http://localhost:3000/tasks',
-        success: function(data) {
-          tasks = data;
-          ajaxData(data);
-        }
-      }).done(function() {
-        displayTasks(tasks);
-      });
-    }
+//     // get all tasks
+//     function getTasks(ajaxData) {
+//       $.ajax({
+//         url: 'http://localhost:3000/tasks',
+//         success: function(data) {
+//           tasks = data;
+//           ajaxData(data);
+//         }
+//       }).done(function() {
+//         displayTasks(tasks);
+//       });
+//     }
 
-    // use ajax data outside of getTask(ajaxData)
-    getTasks(function(output) {
-      console.log(output)
-    });
+//     // use ajax data outside of getTask(ajaxData)
+//     getTasks(function(output) {
+//       console.log(output)
+//     });
 
-    // get id
-    $(document).on('click','.single-todo',function() {
-     var todo = $(this),
-          id     = todo.find('button').attr('data-id');
-     form.find('[type="hidden"]').val(id);
-   });
+//     // get id
+//     $(document).on('click','.single-todo',function() {
+//      var todo = $(this),
+//           id     = todo.find('button').attr('data-id');
+//      form.find('[type="hidden"]').val(id);
+//    });
 
-    // delete tasks
-    $(document).on('click', '.destroy[data-id]', function() {
-      var self = $(this),
-      id    = self.attr('data-id');
-      $(this).parent().fadeOut(500, function() {
-        $.ajax({
-          url: 'http://localhost:3000/tasks/?id=' + id,
-          type: 'DELETE',
-          success: function(data) {
-           console.log('task deleted');
-         }
-       });
-      });
-    });
+//     // delete tasks
+//     $(document).on('click', '.destroy[data-id]', function() {
+//       var self = $(this),
+//       id    = self.attr('data-id');
+//       $(this).parent().fadeOut(500, function() {
+//         $.ajax({
+//           url: 'http://localhost:3000/tasks/?id=' + id,
+//           type: 'DELETE',
+//           success: function(data) {
+//            console.log('task deleted');
+//          }
+//        });
+//       });
+//     });
+    
+//     // new way to update tasks
+//     $(document).on('click', '.update', function() {
+//       var todo = $(this),
+//       id     = todo.attr('data-id');
+//       var data = {};
+//       data.id = id;
+//       data.name = $(this).prev().prev('.test2').val();
+//       data.task = $(this).prev('.test3').val();
+//       $.ajax({
+//         url: 'http://localhost:3000/tasks',
+//         type: 'PATCH',
+//         data: data,
+//         success: function(data) {
+//           location.reload(true);
+//         }
+//       });
+//     });
 
-    // new way to update tasks
-    $(document).on('click', '.update', function() {
-      var todo = $(this),
-      id     = todo.attr('data-id');
-      var data = {};
-      data.id = id;
-      data.name = $(this).prev().prev('.test2').val();
-      data.task = $(this).prev('.test3').val();
-      $.ajax({
-        url: 'http://localhost:3000/tasks',
-        type: 'PATCH',
-        data: data,
-        success: function(data) {
-          location.reload(true);
-        }
-      });
-    });
-
-  });
-</script>
-<!-- </body>
-</html> -->
+//   });
+ </script>
+ <!-- </body> -->
+ <!-- </html> -->
