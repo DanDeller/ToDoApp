@@ -1,0 +1,11 @@
+body {margin: 0; padding: 0; border: none}
+.container {width: 575px; padding: 0}
+h1 {margin: 50px 0 50px 0}
+ul {list-style: none; margin: 0 0 20px -40px}
+.list {width: 504px; margin: 50px 0 0 0}
+.list p {float:left; margin: 0 20px 0 0; font-size: 16px}
+.single-todo {width: 100%; height: 30px; margin: 0 0 10px 0; border-bottom: 1px solid #ccc; padding: 0 0px 35px 0; cursor: pointer}
+.single-todo:last-of-type {border: none}
+.destroy, .update {margin: 0 0 0 10px}
+input {margin: 0 0 10px 0}
+input[type=submit] {margin: 0 0 0 10px}
