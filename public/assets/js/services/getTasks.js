@@ -1,8 +1,13 @@
-angular.module('danApp').service('taskService', function($http) {
+/**
+* @name getTasks/handleSuccess
+* @description Get all names and tasks
+* @param response -
+*/
+
+danApp.service('taskService', function($http) {
 
   return({
-    getTasks: getTasks,
-    updateTask: updateTask
+    getTasks: getTasks
   });
 
   function getTasks() {
@@ -18,31 +23,7 @@ angular.module('danApp').service('taskService', function($http) {
 
   function handleSuccess(response) {
     return (response.data);
-  }
-
-
-
-  function updateTask(id) {
-    // var data = {};
-    // data.id = id;
-    // data.name = $('.task-name').val();
-    // data.task = $('.task-task').val();
-
-    // console.log(data)
-
-    // var test = $http({
-    //   method: 'patch',
-    //   url: '/tasks',
-    //   data: data,
-    //   params: {
-    //     action: 'patch'
-    //   }
-    // });
-    // return (test.then(handleUpdate));
-  }
-
-  function handleUpdate(response) {
-    return (response.data);
+    console.log(response.data)
   }
 
 });

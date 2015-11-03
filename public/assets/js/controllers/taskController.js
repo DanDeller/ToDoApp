@@ -1,12 +1,12 @@
 danApp.controller('tasksController', ['$scope', '$http', 'taskService', function tasksController($scope, $http, taskService) {
 
-  $scope.tasks;
-
   /**
   * @name applyAllTasks/getAllTask
-  * @description Get all tasks and store
-  * @param task task object
+  * @description Get all tasks and store them
+  * @param task - task object
   */
+
+  $scope.tasks;
 
   $scope.applyAllTasks = function(tasks) {
     $scope.tasks = tasks;
@@ -20,33 +20,5 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', function
   }
 
   $scope.getAllTasks();
-
-  /**
-  * @name updateTask
-  * @description Update name and task
-  * @param id id of current task
-  */
-
-  $scope.updateTask = function(id) {
-  
-    var data = {};
-    data.id = id;
-    data.name = $('.task-name').val();
-    data.task = $('.task-task').val();
-
-    var test = $http({
-      method: 'patch',
-      url: '/tasks',
-      data: data,
-      params: {
-        action: 'patch'
-      }
-    });
-
-    // taskService.updateTask()
-    //   .then(function(tasks) {
-    //     console.log(tasks);
-    //   });
-  }
 
 }]);
