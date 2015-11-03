@@ -15,7 +15,7 @@ danApp.config(function($routeProvider) {
 
 
 
-// directive up update our task list
+// directive up update our task list - to use put update-task inside of tag
 // danApp.directive('updateTasks', function() {
 //     return({
 //         link: updateIt,

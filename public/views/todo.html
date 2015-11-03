@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Todo List ({{message}})</h2>
+  <h2>Todo List</h2>
 
   <!-- post new todos -->
   <h3>Add tasks</h3>
@@ -12,11 +12,11 @@
   <!-- loop -->
   <div class="list">
     <ul class="task-list" style="list-style-type: none;  margin: 20px 0 0 -40px">
-      <li ng-click='getId(id)' ng-repeat='allTask in allTasks' >
-        <input type="hidden" name="id" value="{{allTask.id}}" />
-        <input class="task-name"  name="name" value="{{allTask.name}}" />
-        <input class="task" name="task" value="{{allTask.task}}" />
-        <button ng-click='updateTask(task.id)' data-id="{{task.id}}" class="update" update-tasks>Update</button>
+      <li ng-click='getId(id)' ng-repeat='task in tasks' >
+        <input type="hidden" name="id" value="{{task.id}}" />
+        <input class="task-name"  name="name" value="{{task.name}}" />
+        <input class="task-task" name="task" value="{{task.task}}" />
+        <button ng-click='updateTask(task.id)' data-id="{{task.id}}" class="update">Update</button>
         <button data-id="{{task.id}}" class="destroy">Delete</button>
       </li>
     </ul>
