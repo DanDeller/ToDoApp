@@ -3,7 +3,6 @@
 * @description Get all names and tasks
 * @param response -
 */
-
 danApp.service('taskService', function($http) {
 
   return({
@@ -23,7 +22,6 @@ danApp.service('taskService', function($http) {
 
   function handleSuccess(response) {
     return (response.data);
-    console.log(response.data)
   }
 
 });

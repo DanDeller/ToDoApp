@@ -3,9 +3,7 @@
 * @description Add names and tasks
 * @param scope, element, attributes
 */
-
 danApp.directive('addTasks', function($http, $route) {
-
   return({
     link: addIt,
     restrict: 'A'
@@ -39,9 +37,7 @@ danApp.directive('addTasks', function($http, $route) {
 * @description Update name and task
 * @param scope, element, attributes
 */
-
 danApp.directive('updateTasks', function($http, $route) {
-
   return({
     link: updateIt,
     restrict: 'A'
@@ -78,9 +74,7 @@ danApp.directive('updateTasks', function($http, $route) {
 * @description Delete specific tasks
 * @param scope, element, attributes
 */
-
 danApp.directive('deleteTasks', function($http, $route) {
-
   return({
     link: deleteIt,
     restrict: 'A'
