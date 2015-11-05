@@ -1,7 +1,7 @@
 /**
-* @name getAllTask/applyAllTasks
-* @description Get all tasks and store them
-* @param task - task object
+* @name tasksController
+* @description create task, read task, update task, delete task
+* @param task object, id, name, task
 */
 danApp.controller('tasksController', ['$scope', '$http', 'taskService', function tasksController($scope, $http, taskService) {
 

@@ -1,18 +1,13 @@
 <div class="container">
   <h2>Todo List</h2>
-
-  <!-- post new todos -->
-  <h3>Add tasks</h3>
   <form>
     <input class="name" name="name" type="text" placeholder='name' ng-model='task.name' />
     <input class="task" name="task" type="text" placeholder='task' ng-model='task.task' />
     <button ng-click='createTask(task.name, task.task)'>Submit</button>
   </form>
-
-  <!-- loop -->
   <div class="list">
     <ul class="task-list">
-      <li ng-repeat='task in tasks' >
+      <li ng-repeat='task in tasks'>
         <form>
           <input type="hidden" name="id" value="{{task.id}}" ng-model='task.id' />
           <input class="task-name" name="name" value="{{task.name}}" ng-model='task.name' />

@@ -1,4 +1,4 @@
-var danApp = angular.module('danApp', ['ngRoute']);
+var danApp = angular.module('danApp', ['ngRoute', 'ngAnimate']);
 
 danApp.config(function($routeProvider) {
   $routeProvider
