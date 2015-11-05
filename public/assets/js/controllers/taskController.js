@@ -8,7 +8,7 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', function
   $scope.tasks;
 
   $scope.getAllTasks = function() {
-    taskService.getTasks()
+    taskService.readTasks()
       .then(function(tasks) {
          $scope.applyAllTasks(tasks);
       });
@@ -19,5 +19,20 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', function
   }
 
   $scope.getAllTasks();
+
+  $scope.task = {
+    id: '',
+    name: '',
+    task: ''
+  };
+
+  $scope.createTask = function() {
+    taskService.createTask($scope.task.name, $scope.task.task);
+  }
+
+ $scope.patchTask = function() {
+  console.log($scope.task)
+  taskService.updateTask($scope.task.id, $scope.task.name, $scope.task.task);
+}
 
 }]);
