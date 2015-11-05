@@ -14,6 +14,7 @@ input[type=submit] {margin: 0 0 0 10px}
 textarea:focus, input:focus{outline: 0}
 button {background: rgba(0, 0, 0, 0); border: 1px solid #fff; color: #fff; transition: all .3s linear 0s}
 button:hover {box-shadow: 0px 0px 0px 2px #fff}
+button:focus {outline:0}
 ::-webkit-input-placeholder {
 	font-family: raleway;
   font-weight: lighter;
@@ -23,19 +24,19 @@ button:hover {box-shadow: 0px 0px 0px 2px #fff}
 :-moz-placeholder {  F
 		font-family: raleway;
   font-weight: 400;
-  color: #fff;  
+  color: #fff;
 }
 
 ::-moz-placeholder {
 	font-family: raleway;
   font-weight: 400;
-  color: #fff;  
+  color: #fff;
 }
 
 :-ms-input-placeholder {
-	font-family: raleway;  
+	font-family: raleway;
   font-weight: 400;
-  color: #fff;  
+  color: #fff;
 }
 li {
     opacity: 1;

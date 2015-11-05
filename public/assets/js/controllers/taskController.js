@@ -11,6 +11,8 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', function
     taskService.readTasks()
       .then(function(tasks) {
          $scope.applyAllTasks(tasks);
+      }, function(error) {
+        alert('Read failed due to:' + error);
       });
   }
 
@@ -33,3 +35,6 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', function
   }
 
 }]);
+
+
+
