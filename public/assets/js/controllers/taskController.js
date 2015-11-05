@@ -20,19 +20,16 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', function
 
   $scope.getAllTasks();
 
-  $scope.task = {
-    id: '',
-    name: '',
-    task: ''
-  };
-
-  $scope.createTask = function() {
-    taskService.createTask($scope.task.name, $scope.task.task);
+  $scope.createTask = function(name, task) {
+    taskService.createTask(name, task);
   }
 
- $scope.patchTask = function() {
-  console.log($scope.task)
-  taskService.updateTask($scope.task.id, $scope.task.name, $scope.task.task);
-}
+  $scope.patchTask = function(id, name, task) {
+    taskService.updateTask(id, name, task);
+  }
+
+  $scope.destroyTask = function(id) {
+    taskService.deleteTask(id);
+  }
 
 }]);

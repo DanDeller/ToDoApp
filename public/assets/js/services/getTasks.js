@@ -3,7 +3,8 @@ danApp.service('taskService', function($http, $route) {
   return {
     readTasks: readTasks,
     createTask: createTask,
-    updateTask: updateTask
+    updateTask: updateTask,
+    deleteTask: deleteTask
   };
 
   /**
@@ -54,7 +55,7 @@ danApp.service('taskService', function($http, $route) {
   /**
   * @name updateTask
   * @description Update names and tasks
-  * @param name, task
+  * @param id, name, task
   */
   function updateTask(id, name, task) {
 
@@ -75,46 +76,23 @@ danApp.service('taskService', function($http, $route) {
     return updateTask;
   }
 
+
+  /**
+  * @name deleteTask
+  * @description Delete names and tasks
+  * @param name, task
+  */
+  function deleteTask(id, name, task) {
+
+    $http({
+      method: 'delete',
+      url: 'http://localhost:3000/tasks/?id=' + id,
+      params: {
+        action: 'delete'
+      }
+    });
+    $route.reload();
+    return deleteTask;
+  }
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
