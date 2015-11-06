@@ -1,4 +1,4 @@
-danApp.service('taskService', function($http, $route) {
+danApp.service('taskService', function($http, $route, $q) {
 
   return {
     readTasks: readTasks,
@@ -46,7 +46,7 @@ danApp.service('taskService', function($http, $route) {
         action: 'post'
       }
     }).then(function(data) {
-      $route.reload();
+      // $route.reload();
     }, function(error) {
       alert('Create failed due to:' + error);
     });
