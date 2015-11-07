@@ -46,7 +46,7 @@ danApp.service('taskService', function($http, $route, $q) {
         action: 'post'
       }
     }).then(function(data) {
-      // $route.reload();
+      $route.reload();
     }, function(error) {
       alert('Create failed due to:' + error);
     });
@@ -86,7 +86,7 @@ danApp.service('taskService', function($http, $route, $q) {
   * @description Delete names and tasks
   * @param name, task
   */
-  function deleteTask(id) {
+  function deleteTask(id, name, task) {
     $http({
       method: 'delete',
       url: 'http://localhost:3000/tasks/?id=' + id,
