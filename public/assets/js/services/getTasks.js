@@ -86,7 +86,7 @@ danApp.service('taskService', function($http, $route, $q) {
   * @description Delete names and tasks
   * @param name, task
   */
-  function deleteTask(id, name, task) {
+  function deleteTask(id) {
     $http({
       method: 'delete',
       url: 'http://localhost:3000/tasks/?id=' + id,
