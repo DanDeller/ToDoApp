@@ -30,9 +30,6 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', function
     // });
 
     taskService.createTask(name, task);
-
-    $scope.task.name = '';
-    $scope.task.task = '';
   }
 
   $scope.patchTask = function(id, name, task) {

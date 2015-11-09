@@ -7,7 +7,7 @@
   </form>
   <div class="list">
     <ul class="task-list">
-      <li ng-repeat='task in tasks'>
+      <li ng-repeat='task in tasks' >
         <form>
           <input type="hidden" name="id" value="{{task.id}}" ng-model='task.id' />
           <input class="task-name" name="name" value="{{task.name}}" ng-model='task.name' />
