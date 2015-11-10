@@ -11,6 +11,7 @@ danApp.service('taskService', function($http, $route, $q) {
   * @name readTasks/handleSuccess
   * @description Get all names and tasks
   * @param response
+  * @return request/response
   */
   function readTasks() {
     var request = $http({
@@ -32,6 +33,7 @@ danApp.service('taskService', function($http, $route, $q) {
   * @name createTask
   * @description Create new names and tasks
   * @param name, task
+  * @return createTask
   */
   function createTask(name, task) {
     var data = {};
@@ -46,7 +48,7 @@ danApp.service('taskService', function($http, $route, $q) {
         action: 'post'
       }
     }).then(function(data) {
-      // $route.reload();
+      $route.reload();
     }, function(error) {
       alert('Create failed due to:' + error);
     });
@@ -58,6 +60,7 @@ danApp.service('taskService', function($http, $route, $q) {
   * @name updateTask
   * @description Update names and tasks
   * @param id, name, task
+  * @return updateTask
   */
   function updateTask(id, name, task) {
     var data = {};
@@ -85,6 +88,7 @@ danApp.service('taskService', function($http, $route, $q) {
   * @name deleteTask
   * @description Delete names and tasks
   * @param name, task
+  * @return deleteTask
   */
   function deleteTask(id, name, task) {
     $http({
@@ -94,7 +98,7 @@ danApp.service('taskService', function($http, $route, $q) {
         action: 'delete'
       }
     }).then(function() {
-      $route.reload();
+      // $route.reload();
     }, function(error) {
       alert('Delete failed due to:' + error);
     });

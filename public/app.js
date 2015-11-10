@@ -1,4 +1,4 @@
-var danApp = angular.module('danApp', ['ngRoute', 'ngAnimate']);
+var danApp = angular.module('danApp', ['ngRoute', 'ngAnimate', 'ngResource']);
 
 danApp.config(function($routeProvider) {
   $routeProvider
@@ -9,5 +9,8 @@ danApp.config(function($routeProvider) {
   .when('/tasks', {
     templateUrl : 'views/todo.html',
     controller  : 'tasksController'
+  })
+  .otherwise({
+    redirectTo : '/'
   });
 });

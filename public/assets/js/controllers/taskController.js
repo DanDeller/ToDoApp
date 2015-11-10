@@ -3,9 +3,9 @@
 * @description create task, read task, update task, delete task
 * @param task object, id, name, task
 */
-danApp.controller('tasksController', ['$scope', '$http', 'taskService', function tasksController($scope, $http, taskService) {
+danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFactory', function tasksController($scope, $http, taskService, taskFactory) {
 
-  $scope.tasks;
+  $scope.tasks = [];
 
   $scope.getAllTasks = function() {
     taskService.readTasks()
@@ -14,31 +14,33 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', function
       }, function(error) {
         alert('Read failed due to:' + error);
       });
-  }
+  };
 
   $scope.applyAllTasks = function(tasks) {
     $scope.tasks = tasks;
-  }
+    console.log($scope.tasks)
+  };
 
   $scope.getAllTasks();
 
   $scope.createTask = function(name, task) {
-
-    // $scope.tasks.push({
-    //   name: name,
-    //   task: task
-    // });
-
     taskService.createTask(name, task);
-  }
+    $scope.tasks.name = '';
+    $scope.tasks.task = '';
+  };
 
   $scope.patchTask = function(id, name, task) {
     taskService.updateTask(id, name, task);
-  }
+  };
 
-  $scope.destroyTask = function(id) {
+  $scope.destroyTask = function(id, index) {
+    $scope.tasks.splice(index, 1);
     taskService.deleteTask(id);
-  }
+  };
+
+  $scope.focusOnIt = function() {
+    taskFactory('email');
+  };
 
 }]);
 
