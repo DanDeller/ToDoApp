@@ -18,7 +18,6 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
 
   $scope.applyAllTasks = function(tasks) {
     $scope.tasks = tasks;
-    console.log($scope.tasks)
   };
 
   $scope.getAllTasks();
