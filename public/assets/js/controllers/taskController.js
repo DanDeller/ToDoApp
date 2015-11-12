@@ -24,8 +24,8 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
 
   $scope.createTask = function(name, task) {
     taskService.createTask(name, task);
-    $scope.tasks.name = '';
-    $scope.tasks.task = '';
+    $scope.task.name = '';
+    $scope.task.task = '';
   };
 
   $scope.patchTask = function(id, name, task) {
@@ -38,7 +38,7 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   };
 
   $scope.focusOnIt = function() {
-    taskFactory('email');
+    taskFactory('emails');
   };
 
 }]);
