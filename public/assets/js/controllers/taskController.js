@@ -42,6 +42,3 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   };
 
 }]);
-
-
-
