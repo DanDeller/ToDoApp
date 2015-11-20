@@ -23,9 +23,13 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   $scope.getAllTasks();
 
   $scope.createTask = function(name, task) {
+    // $scope.tasks.push({
+    //   name: name,
+    //   task: task
+    // });
     taskService.createTask(name, task);
-    $scope.task.name = '';
-    $scope.task.task = '';
+    $scope.name = '';
+    $scope.task = '';
   };
 
   $scope.patchTask = function(id, name, task) {
@@ -38,7 +42,7 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   };
 
   $scope.focusOnIt = function() {
-    taskFactory('emails');
+    taskFactory.focusIt('focus');
   };
 
 }]);

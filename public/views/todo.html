@@ -1,9 +1,9 @@
 <div class="container">
   <h2>Todo List</h2>
   <form class="addForm" ng-init='focusOnIt()'>
-    <input id="emails" class="name" name="name" type="text" placeholder='name' ng-model='task.name' />
+    <input id="focus" class="name" name="name" type="text" placeholder='name' ng-model='task.name' />
     <input class="task" name="task" type="text" placeholder='task' ng-model='task.task' />
-    <button ng-click='createTask(task.name, task.task)' event-focus="click" event-focus-id="email">Submit</button>
+    <button ng-click='createTask(task.name, task.task)' event-focus="click" event-focus-id="focus">Submit</button>
   </form>
   <div class="list">
     <ul class="task-list">

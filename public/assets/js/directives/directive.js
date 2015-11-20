@@ -6,7 +6,7 @@
 danApp.directive('eventFocus', function(taskFactory) {
   return function(scope, elem, attr) {
     elem.on('click', function() {
-      taskFactory(attr.eventFocusId);
+      taskFactory.focusIt(attr.eventFocusId);
     });
     scope.$on('$destroy', function() {
       elem.off(attr.eventFocus);
