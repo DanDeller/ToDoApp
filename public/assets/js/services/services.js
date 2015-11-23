@@ -48,7 +48,7 @@ danApp.service('taskService', function($http, $route, $q) {
         action: 'post'
       }
     }).then(function(data) {
-      // $route.reload();
+      $route.reload();
     }, function(error) {
       alert('Create failed due to:' + error);
     });
