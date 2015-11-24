@@ -31,7 +31,7 @@ gulp
 http://localhost:3000/#/
 ```
 
-<h2>RethinkDB data explorer</h2>
+<h3>RethinkDB data explorer</h3>
 ```
 http://localhost:8080/#dataexplorer
 ```
