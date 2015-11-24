@@ -1,4 +1,8 @@
 # seoApp
-Just a basic API.
+A quick todo app with node, express, angularJS, and rethinkdb
 
-Start with npm run dev.
+<h2>Start up instructions:</h2>
+```
+start rethinkdb
+```
+
