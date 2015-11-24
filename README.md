@@ -7,3 +7,8 @@ A quick todo app with node, express, angularJS, and rethinkdb
 rethihkdb
 ```
 
+<h3>start up app</h3>
+```
+npm run dev
+```
+
