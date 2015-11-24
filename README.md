@@ -2,6 +2,13 @@
 A quick todo app with node, express, angularJS, and rethinkdb
 
 <h2>Start up instructions:</h2>
+
+<h3>Set up app:</h3>
+```
+cd seoApp
+npm install
+```
+
 <h3>start rethinkdb:</h3>
 ```
 rethihkdb
