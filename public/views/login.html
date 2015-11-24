@@ -1,18 +1,14 @@
 <div class="container">
-  <h2>Sign Up</h2>
-  <form action="/users" method="POST">
-    <label>Username:</label>
+  <h2 class="login-title">Sign Up</h2>
+  <form action="/users" method="POST" class="sign-up">
     <input class="email" type="text" name="username" placeholder='email' />
-    <label>Password:</label>
-    <input class="password" type="password" name="password"/>
+    <input class="password" type="password" name="password" placeholder='password' />
     <input class="submit" type="submit" value="Submit"/>
   </form>
   <h2>Login</h2>
   <form action="/login" method="POST">
-    <label>Username:</label>
     <input type="text" name="username" placeholder='email' />
-    <label>Password:</label>
-    <input type="password" name="password"/>
+    <input type="password" name="password" placeholder='password' />
     <input type="submit" value="Submit"/>
   </form>
 </div>
