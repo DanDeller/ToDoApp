@@ -9,17 +9,17 @@ cd seoApp
 npm install
 ```
 
-<h3>Start rethinkdb:</h3>
+<h3>Start rethinkdb (new tab):</h3>
 ```
 rethihkdb
 ```
 
-<h3>Start up app:</h3>
+<h3>Start up app (new tab):</h3>
 ```
 npm run dev
 ```
 
-<h3>Start up gulp:</h3>
+<h3>Start up gulp (new tab):</h3>
 ```
 cd public
 gulp
