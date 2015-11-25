@@ -7,12 +7,12 @@
   </form>
   <div class="list">
     <ul class="task-list">
-    <input class="search" placeholder='Search for Tasks' ng-model="search.$">
+    <input class="search" type="text" placeholder='Search for Tasks' ng-model="search.$">
       <li ng-repeat='task in tasks | filter:search:strict' >
         <form>
           <input type="hidden" name="id" value="{{task.id}}" ng-model='task.id' />
-          <input class="task-name" name="name" value="{{task.name}}" ng-model='task.name' />
-          <input class="task-job" name=" task" value="{{task.task}}" ng-model='task.task' />
+          <input class="task-name" type="text" name="name" value="{{task.name}}" ng-model='task.name' />
+          <input class="task-job" type="text" name="task" value="{{task.task}}" ng-model='task.task' />
           <button data-id="{{task.id}}" class="update" ng-click='patchTask(task.id, task.name, task.task)'>Update</button>
           <button data-id="{{task.id}}" class="destroy" ng-click='destroyTask(task.id, $index)'>Delete</button>
         </form>
