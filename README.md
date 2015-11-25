@@ -9,12 +9,12 @@ cd seoApp
 npm install
 ```
 
-<h3>start rethinkdb:</h3>
+<h3>Start rethinkdb:</h3>
 ```
 rethihkdb
 ```
 
-<h3>start up app:</h3>
+<h3>Start up app:</h3>
 ```
 npm run dev
 ```
