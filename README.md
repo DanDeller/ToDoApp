@@ -21,6 +21,7 @@ npm run dev
 
 <h3>Start up gulp:</h3>
 ```
+cd public
 gulp
 ```
 
