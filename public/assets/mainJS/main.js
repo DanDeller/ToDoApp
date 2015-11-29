@@ -15,7 +15,7 @@ danApp.config(function($routeProvider) {
   });
 });
 danApp.controller('mainController', ['$scope', '$window', function mainController($scope, $window) {
-
+	
 }]);
 /**
 * @name tasksController
@@ -65,22 +65,6 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   };
 
 }]);
-/**
-* @name eventFocus
-* @description after adding a task focus on create task input
-* @param taskFactory
-*/
-// hey
-danApp.directive('eventFocus', function(taskFactory) {
-  return function(scope, elem, attr) {
-    elem.on('click', function() {
-      taskFactory.focusIt(attr.eventFocusId);
-    });
-    scope.$on('$destroy', function() {
-      elem.off(attr.eventFocus);
-    });
-  };
-});
 /**
 * @name taskFactory
 * @description timeout for focus event/get tasks/set tasks
@@ -231,4 +215,20 @@ danApp.service('taskService', function($http, $route, $q) {
     return deleteTask;
   }
 
+});
+/**
+* @name eventFocus
+* @description after adding a task focus on create task input
+* @param taskFactory
+*/
+// hey
+danApp.directive('eventFocus', function(taskFactory) {
+  return function(scope, elem, attr) {
+    elem.on('click', function() {
+      taskFactory.focusIt(attr.eventFocusId);
+    });
+    scope.$on('$destroy', function() {
+      elem.off(attr.eventFocus);
+    });
+  };
 });

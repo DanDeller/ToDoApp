@@ -6,33 +6,64 @@ body {
 }
 
 .container {
-  width: 595px;
+  width: 50%;
   padding: 0;
-  h2 {
-    margin: 0 0 25px 0;
-    font-family: raleway;
-    color: #fff;
-    text-shadow: 1px 1px 1px #1D86A6;
-    font-weight: 700
-  }
-
   h3 {
     margin: 10px 0 20px 0;
     font-family: raleway;
     color: #f3f3f3;
     text-shadow: 1px 1px 1px #1D86A6
   }
-
   ul {
     list-style: none;
-    margin: 0 0 0  -40px
+    margin: 0 0 0 -40px;
   }
 }
 
 #main .container {
   background-color: #2ECCFA;
   box-shadow: 0px 0px 10px 1px #ccc;
-  padding: 10px
+}
+
+.profile {
+  float: left;
+  width: 30%;
+  height: 50vh;
+  min-height: 200px;
+  background-color: #4c4c4c;
+  h2 {
+    margin: 10px 0 10px 0;
+    font-family: raleway;
+    color: #fff;
+    text-align: center;
+    font-size: 2.2vw;
+    font-weight: 700
+  }
+  .profile-image {
+    width: 7em;
+    min-height: 25%;
+    margin: 0 auto 10px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+  }
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+.todo-list {
+  float: left;
+  width: 70%;
+  padding: 20px 10px 10px 10px;
+  .addForm input {
+    width: 49%;
+  }
+  .addForm button {
+    display: none;
+  }
 }
 
 .list {
@@ -42,11 +73,18 @@ body {
     margin: 0 20px 0 0;
     font-size: 16px;
   }
+  li {
+    width: 86%;
+    margin: 0 auto;
+  }
+  input[type=text] {
+    width: 42%;
+  }
 }
 
 input[type=text],
 input[type=password] {
-  margin: 0 0 10px 0;
+  margin: 0;
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #fff;
@@ -56,11 +94,16 @@ input[type=password] {
   color: #fff
 }
 
+.update {
+  display: none;
+}
+
 textarea:focus, input:focus{
   outline: 0
 }
 
-input[type=submit] {
+input[type=submit],
+button {
   margin: 0;
   background-color: transparent;
   border: 1px solid #fff;
@@ -75,6 +118,7 @@ button {
   background-color: transparent;
   border: 1px solid #fff;
   color: #fff;
+  transition: all .3s linear 0s;
   &:focus {
     outline:0
   }
@@ -87,7 +131,7 @@ button {
 
 .addForm {
   margin: 0 auto;
-  width: 87%
+  width: 80%
 }
 
 ::-webkit-input-placeholder {
