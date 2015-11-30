@@ -25,6 +25,7 @@ danApp.controller('mainController', ['$scope', '$window', function mainControlle
 danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFactory', function tasksController($scope, $http, taskService, taskFactory) {
 
   $scope.tasks = [];
+  $scope.userImage = [];
 
   $scope.getImage = function() {
     taskService.getImage()
@@ -36,7 +37,8 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   };
 
   $scope.useImage = function(image) {
-    console.log(image);
+    $scope.userImage = image;
+    console.log($scope.userImage);
   }
 
   $scope.getImage();
@@ -155,6 +157,17 @@ danApp.directive('fileDropzone', function(taskService) {
 			});
 		}
 	};
+});
+
+danApp.directive('deleteImage', function(taskService) {
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			element.on('mouseenter', function() {
+				console.log('hovered')
+			});
+		}
+	}
 });
 /**
 * @name taskFactory

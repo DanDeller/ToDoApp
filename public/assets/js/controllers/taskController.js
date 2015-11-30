@@ -6,6 +6,7 @@
 danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFactory', function tasksController($scope, $http, taskService, taskFactory) {
 
   $scope.tasks = [];
+  $scope.userImage = [];
 
   $scope.getImage = function() {
     taskService.getImage()
@@ -17,7 +18,8 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   };
 
   $scope.useImage = function(image) {
-    console.log(image);
+    $scope.userImage = image;
+    console.log($scope.userImage);
   }
 
   $scope.getImage();

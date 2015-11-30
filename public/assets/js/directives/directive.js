@@ -78,3 +78,14 @@ danApp.directive('fileDropzone', function(taskService) {
 		}
 	};
 });
+
+danApp.directive('deleteImage', function(taskService) {
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			element.on('mouseenter', function() {
+				console.log('hovered')
+			});
+		}
+	}
+});
