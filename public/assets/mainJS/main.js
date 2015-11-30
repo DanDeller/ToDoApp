@@ -26,6 +26,22 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
 
   $scope.tasks = [];
 
+  $scope.getImage = function() {
+    taskService.getImage()
+    .then(function(image) {
+    }, function(error) {
+      alert('Failed to get user image:' + error);
+    });
+  };
+
+  $scope.useImage = function(image) {
+    console.log(image);
+  }
+
+  $scope.getImage();
+
+  
+
   $scope.getAllTasks = function() {
     taskService.readTasks()
       .then(function(tasks) {
@@ -191,8 +207,24 @@ danApp.service('taskService', function($http, $route, $q) {
     createTask: createTask,
     updateTask: updateTask,
     deleteTask: deleteTask,
-    userImage: userImage
+    userImage: userImage,
+    getImage: getImage
   };
+
+  function getImage() {
+    var request = $http({
+      method: 'get',
+      url: '/userImage',
+      params: {
+        action: 'get'
+      }
+    });
+    return (request.then(handleImage));
+  }
+
+  function handleImage(response) {
+    return (response.data);
+  }
 
   /**
   * @name readTasks/handleSuccess
@@ -261,8 +293,6 @@ danApp.service('taskService', function($http, $route, $q) {
         action: 'post'
       }
     }).then(function(data) {
-      console.log(data);
-      // $route.reload();
     }, function(error) {
       alert('Create failed due to:' + error);
     });
