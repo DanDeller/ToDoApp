@@ -4,20 +4,23 @@ body {
   border: none
 }
 
+#login {
+  width: 40%;
+  padding: 10px;
+}
+
 .container {
-  width: 575px;
   padding: 0;
   h2 {
     margin: 0 0 10px 0;
+    color: #fff;
   }
 }
 
-form.sign-up {
-  margin: 0;
-  input {
-    margin: 0 0 0 0
-  }
+form.sign-up,
+form.log-in {
   input[type=submit] {
+    float: right;
     margin: 0;
     background-color: transparent;
     border: 1px solid #fff;
@@ -30,7 +33,14 @@ form.sign-up {
   button:focus {
     outline: 0
   }
-  &:first-of-type {
-    margin: 0 0 40px 0;
+}
+
+.sign-up,
+.log-in {
+  width: 80%;
+  margin: 0 auto;
+  input[type=text],
+  input[type=password] {
+    width: 40%;
   }
 }

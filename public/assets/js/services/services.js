@@ -4,7 +4,8 @@ danApp.service('taskService', function($http, $route, $q) {
     readTasks: readTasks,
     createTask: createTask,
     updateTask: updateTask,
-    deleteTask: deleteTask
+    deleteTask: deleteTask,
+    userImage: userImage
   };
 
   /**
@@ -53,6 +54,33 @@ danApp.service('taskService', function($http, $route, $q) {
       alert('Create failed due to:' + error);
     });
     return createTask;
+  }
+
+
+  /**
+  * @name userImage
+  * @description Upload user image
+  * @param image
+  * @return userImage
+  */
+  function userImage(image) {
+    var data = {};
+    data.image = image;
+
+    $http({
+      method: 'post',
+      url: '/userImage',
+      data: data,
+      params: {
+        action: 'post'
+      }
+    }).then(function(data) {
+      console.log(data);
+      // $route.reload();
+    }, function(error) {
+      alert('Create failed due to:' + error);
+    });
+    return userImage;
   }
 
 

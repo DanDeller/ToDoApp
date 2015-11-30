@@ -1,4 +1,4 @@
-<div class="container">
+<div id="login" class="container">
   <h2 class="login-title">Sign Up</h2>
   <form action="/users" method="POST" class="sign-up">
     <input class="email" type="text" name="username" placeholder='email' />
@@ -6,7 +6,7 @@
     <input class="submit" type="submit" value="Submit"/>
   </form>
   <h2>Login</h2>
-  <form action="/login" method="POST">
+  <form action="/login" method="POST" class="log-in">
     <input type="text" name="username" placeholder='email' />
     <input type="password" name="password" placeholder='password' />
     <input type="submit" value="Submit" ng-click='logIn()' />

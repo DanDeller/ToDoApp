@@ -1,7 +1,16 @@
 <div class="container">
   <div class="profile">
     <h2>Todo List</h2>
-    <div class="profile-image"></div>
+    <div class="profile-image">
+      <div class="dropzone" file-dropzone="[image/png, image/jpeg, image/gif]"
+                  file="image" file-name="imageFileName" data-max-file-size="3">
+      <span>Drop Image Here</span>
+    </div>
+    <div class="image-container">
+      <img ng-src={{image}} />
+      <span class="file-name">{{imageFileName}}</span>
+    </div>
+    </div>
     <h3>Username</h3>
   </div>
   <div class="todo-list">
@@ -12,14 +21,15 @@
     </form>
     <div class="list">
       <ul class="task-list">
-      <input class="search" type="text" placeholder='Search for Tasks' ng-model="search.$">
+      <input class="search" type="text" placeholder='search' ng-model="search.$">
         <li ng-repeat='task in tasks | filter:search:strict' >
           <form>
             <input type="hidden" name="id" value="{{task.id}}" ng-model='task.id' />
             <input class="task-name" type="text" name="name" value="{{task.name}}" ng-model='task.name' />
             <input class="task-job" type="text" name="task" value="{{task.task}}" ng-model='task.task' />
             <button data-id="{{task.id}}" type="hidden" class="update" ng-click='patchTask(task.id, task.name, task.task)'>Update</button>
-            <button data-id="{{task.id}}" class="destroy" ng-click='destroyTask(task.id, $index)'>Delete</button>
+            <input type="checkbox" data-id="{{task.id}}" class="destroy" ng-click='destroyTask(task.id, $index)' />
+            <!-- <button data-id="{{task.id}}" class="destroy" ng-click='destroyTask(task.id, $index)'>Delete</button> -->
           </form>
         </li>
       </ul>

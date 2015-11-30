@@ -42,10 +42,6 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   $scope.getAllTasks();
 
   $scope.createTask = function(name, task) {
-    // $scope.tasks.push({
-    //   name: name,
-    //   task: task
-    // });
     taskService.createTask(name, task);
     $scope.name = '';
     $scope.task = '';
@@ -65,6 +61,86 @@ danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFac
   };
 
 }]);
+/**
+* @name eventFocus
+* @description after adding a task focus on create task input
+* @param taskFactory
+*/
+// hey
+danApp.directive('eventFocus', function(taskFactory) {
+	return function(scope, elem, attr) {
+		elem.on('click', function() {
+			taskFactory.focusIt(attr.eventFocusId);
+		});
+		scope.$on('$destroy', function() {
+			elem.off(attr.eventFocus);
+		});
+	};
+});
+
+danApp.directive('fileDropzone', function(taskService) {
+	return {
+		restrict: 'A',
+		scope: {
+			file: '=',
+			fileName: '='
+		},
+		link: function(scope, element, attrs) {
+			var checkSize, isTypeValid, processDragOverOrEnter, validMimeTypes;
+			processDragOverOrEnter = function(event) {
+				if (event != null) {
+					event.preventDefault();
+				}
+				event.dataTransfer.effectAllowed = 'copy';
+				return false;
+			};
+			validMimeTypes = attrs.fileDropzone;
+			checkSize = function(size) {
+				var _ref;
+				if (((_ref = attrs.maxFileSize) === (void 0) || _ref === '') || (size / 1024) / 1024 < attrs.maxFileSize) {
+					return true;
+				} else {
+					alert("File must be smaller than " + attrs.maxFileSize + " MB");
+					return false;
+				}
+			};
+			isTypeValid = function(type) {
+				if ((validMimeTypes === (void 0) || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
+					return true;
+				} else {
+					alert("Invalid file type.  File must be one of following types " + validMimeTypes);
+					return false;
+				}
+			};
+			element.bind('dragover', processDragOverOrEnter);
+			element.bind('dragenter', processDragOverOrEnter);
+			return element.bind('drop', function(event) {
+				taskService.userImage(element);
+				var file, name, reader, size, type;
+				if (event != null) {
+					event.preventDefault();
+				}
+				reader = new FileReader();
+				reader.onload = function(evt) {
+					if (checkSize(size) && isTypeValid(type)) {
+						return scope.$apply(function() {
+							scope.file = evt.target.result;
+							if (angular.isString(scope.fileName)) {
+								return scope.fileName = name;
+							}
+						});
+					}
+				};
+				file = event.dataTransfer.files[0];
+				name = file.name;
+				type = file.type;
+				size = file.size;
+				reader.readAsDataURL(file);
+				return false;
+			});
+		}
+	};
+});
 /**
 * @name taskFactory
 * @description timeout for focus event/get tasks/set tasks
@@ -114,7 +190,8 @@ danApp.service('taskService', function($http, $route, $q) {
     readTasks: readTasks,
     createTask: createTask,
     updateTask: updateTask,
-    deleteTask: deleteTask
+    deleteTask: deleteTask,
+    userImage: userImage
   };
 
   /**
@@ -167,6 +244,33 @@ danApp.service('taskService', function($http, $route, $q) {
 
 
   /**
+  * @name userImage
+  * @description Upload user image
+  * @param image
+  * @return userImage
+  */
+  function userImage(image) {
+    var data = {};
+    data.image = image;
+
+    $http({
+      method: 'post',
+      url: '/userImage',
+      data: data,
+      params: {
+        action: 'post'
+      }
+    }).then(function(data) {
+      console.log(data);
+      // $route.reload();
+    }, function(error) {
+      alert('Create failed due to:' + error);
+    });
+    return userImage;
+  }
+
+
+  /**
   * @name updateTask
   * @description Update names and tasks
   * @param id, name, task
@@ -215,20 +319,4 @@ danApp.service('taskService', function($http, $route, $q) {
     return deleteTask;
   }
 
-});
-/**
-* @name eventFocus
-* @description after adding a task focus on create task input
-* @param taskFactory
-*/
-// hey
-danApp.directive('eventFocus', function(taskFactory) {
-  return function(scope, elem, attr) {
-    elem.on('click', function() {
-      taskFactory.focusIt(attr.eventFocusId);
-    });
-    scope.$on('$destroy', function() {
-      elem.off(attr.eventFocus);
-    });
-  };
 });
