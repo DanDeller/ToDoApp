@@ -140,7 +140,7 @@ danApp.service('taskService', function($http, $route, $q) {
         action: 'delete'
       }
     }).then(function() {
-      $route.reload();
+      // $route.reload();
     }, function(error) {
       alert('Delete failed due to:' + error);
     });

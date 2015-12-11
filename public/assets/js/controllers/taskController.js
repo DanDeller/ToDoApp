@@ -6,23 +6,23 @@
 danApp.controller('tasksController', ['$scope', '$http', 'taskService', 'taskFactory', function tasksController($scope, $http, taskService, taskFactory) {
 
   $scope.tasks = [];
-  $scope.userImage = [];
+  // $scope.userImage = [];
 
-  $scope.getImage = function() {
-    taskService.getImage()
-    .then(function(image) {
-      $scope.useImage(image);
-    }, function(error) {
-      alert('Failed to get user image:' + error);
-    });
-  };
+  // $scope.getImage = function() {
+  //   taskService.getImage()
+  //   .then(function(image) {
+  //     $scope.useImage(image);
+  //   }, function(error) {
+  //     alert('Failed to get user image:' + error);
+  //   });
+  // };
 
-  $scope.useImage = function(image) {
-    $scope.userImage = image;
-    console.log($scope.userImage);
-  }
+  // $scope.useImage = function(image) {
+  //   $scope.userImage = image;
+  //   console.log($scope.userImage);
+  // }
 
-  $scope.getImage();
+  // $scope.getImage();
 
   $scope.getAllTasks = function() {
     taskService.readTasks()
