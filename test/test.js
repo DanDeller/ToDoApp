@@ -4,7 +4,6 @@ var should = require('should');
 var assert = require('assert');
 var app = require('../app.js');
 
-
 describe('api', function() {
   describe('task', function () {
 
