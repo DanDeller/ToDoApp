@@ -5,7 +5,7 @@ A quick todo app with node, express, angularJS, and rethinkdb
 
 <h3>Set up app:</h3>
 ```
-cd seoApp
+cd ToDoApp
 npm install
 ```
 
