@@ -25,7 +25,7 @@ rethihkdb
 npm run dev
 ```
 
-<h3>Start up gulp (new tab):</h3>
+<h3>Start up gulp (new tab - only needed for development):</h3>
 ```
 cd public
 gulp
