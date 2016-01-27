@@ -1,6 +1,12 @@
 # ToDo
 A quick todo app with node, express, angularJS, and rethinkdb
 
+<h2>Requirements:</h2>
+```
+Node.js
+RethinkDb
+```
+
 <h2>Start up instructions:</h2>
 
 <h3>Set up app:</h3>
